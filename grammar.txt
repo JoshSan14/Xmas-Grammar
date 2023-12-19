@@ -1,0 +1,158 @@
+\***************************************************************************************\
+
+<navidad> ::= FUNCTION FATHERCHRISTMAS MAIN ABRECUENTO CIERRACUENTO <block>
+
+\***************************************************************************************\
+
+<block> ::= ABREREGALO <stmt_list> CIERRAREGALO
+
+\***************************************************************************************\
+
+<type> ::= FATHERCHRISTMAS 
+         | KRISKRINGLE 
+         | SANTACLAUS 
+         | DEDMOROZ 
+         | SANNICOLAS
+
+<arr_type> ::= FATHERCHRISTMAS
+             | SANTACLAUS
+
+<decl_stmt> := <func_decl>
+             | <var_decl_init> FINREGALO
+             | <arr_decl_init> FINREGALO
+
+<func_decl> ::= FUNCTION <type> PERSONA ABRECUENTO <param_list> CIERRACUENTO <block>
+
+<param_list> ::= <param> 
+	           | <param> PINO <param_list>
+               | 
+
+<param> ::= <type> PERSONA 
+          | <type> PERSONA ABREEMPAQUE CIERRAEMPAQUE
+
+<var_decl_init> ::= <var_decl> 
+                  | <var_decl> ENTREGA <expr>
+
+<var_decl> ::= LOCAL <type> PERSONA 
+
+<arr_decl_init> ::= <arr_decl> 
+                  | <arr_decl> ENTREGA ABREEMPAQUE <expr_list> CIERRAEMPAQUE
+
+<arr_decl> ::= LOCAL <arr_type> PERSONA ABREEMPAQUE <expr> CIERRAEMPAQUE
+
+<expr_list> ::= <expr> 
+	          | <expr> PINO <expr_list>
+
+\***************************************************************************************\
+
+<stmt> ::= <decl_stmt>
+         | <expr_stmt>
+         | <assg_stmt>
+         | <ctrl_struct_stmt>
+         | <input_output_stmt>
+         | <return_stmt> 
+         | <break_stmt> 
+
+<stmt_list> ::= <stmt_list> <stmt>
+              | 
+
+<expr_stmt> ::= <expr> FINREGALO 
+              | FINREGALO
+
+<assg_stmt> ::= <mutable> ENTREGA <expr>
+
+<ctrl_struct_stmt> ::= <conditional_stmt> 
+                     | <iter_stmt>
+
+<conditional_stmt> ::= ELFO ABRECUENTO <expr> CIERRACUENTO <block> <elif_else>
+
+<elif_else> ::= HADA ABRECUENTO <expr> CIERRACUENTO <block> <elif_else>
+              | DUENDE <block>
+		      | 
+
+<iter_stmt> ::= <do_until_loop>
+              | <for_loop> 
+
+<do_until_loop> ::= HACE <block> REVISA ABRECUENTO <expr> CIERRACUENTO FINREGALO
+
+<for_loop> ::= ENVUELVE ABRECUENTO <expr> FINREGALO <expr> FINREGALO <expr> CIERRACUENTO <block>
+               ENVUELVE ABRECUENTO assg_stmt FINREGALO expr FINREGALO expr FINREGALO
+
+<input_output_stmt> ::= <read_stmt> FINREGALO
+                      | <write_stmt> FINREGALO
+
+<read_stmt> ::= ESCUCHA ABRECUENTO PERSONA CIERRACUENTO
+
+<write_stmt> ::= NARRA ABRECUENTO <expr> CIERRACUENTO
+
+<return_stmt> ::= ENVIA <expr_stmt>
+
+<break_stmt> ::= CORTA FINREGALO
+
+\***************************************************************************************\
+
+<expr> ::= <expr> GASPAR <and_expr> 
+         | <and_expr>
+
+<and_expr> ::= <and_expr> MELCHOR <not_expr> 
+             | <not_expr>
+
+<not_expr> ::= BALTAZAR <not_expr> 
+             | <rel_expr>
+
+<rel_expr> ::= <add_sub_expr> <rel_op> <add_sub_expr>
+             | <add_sub_expr>
+
+<rel_op> ::= ALABASTER
+           | BUSHY
+           | PEPPER
+           | SUGARPLUM
+           | WUNORSE
+           | JINGLE
+
+<add_sub_expr> ::= <add_sub_expr> <add_sub_ops> <mul_div_expr>
+                 | <mul_div_expr>
+
+<add_sub_ops> ::= DASHER 
+                | DANCER
+
+<mul_div_expr> ::= <mul_div_expr> <mul_div_ops> <exp_expr> |
+                 | <exp_expr>
+
+<mul_div_ops> ::= PRANCER 
+                | VIXEN 
+                | COMET
+
+<exp_expr> ::= <exp_expr> RUDOLPH <un_arith_expr>
+             | <un_arith_expr>
+
+<un_arith_expr> ::= <un_arith_ops> <un_arith_expr> |
+                  | <factor>
+
+<un_arith_ops> ::= GRINCH 
+                 | QUIEN
+                 | DANCER
+
+<factor> ::= <immutable>
+           | <mutable>
+
+<mutable> ::= PERSONA
+            | PERSONA ABREEMPAQUE <expr> CIERRAEMPAQUE
+
+<immutable> ::= ABRECUENTO <expr> CIERRACUENTO
+              | <call>
+              | <literal>
+
+<call> ::= PERSONA ABRECUENTO <args> CIERRACUENTO
+
+<args> ::= <arg_list> 
+         | 
+
+<arg_list> ::= <arg_list> PINO <expr> 
+             | <expr> 
+
+<literal> ::= L_FATHERCHRISTMAS 
+            | L_KRISKRINGLE
+            | L_SANTACLAUS
+            | L_DEDMOROZ
+            | L_SANNICOLAS
