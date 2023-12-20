@@ -1,0 +1,158 @@
+\***************************************************************************************\
+
+<navidad> ::= FUNCTION FATHERCHRISTMAS MAIN ABRECUENTO CIERRACUENTO <sacoderegalos>
+
+\***************************************************************************************\
+
+<sacoderegalos> ::= ABREREGALO <muñecas> CIERRAREGALO
+
+\***************************************************************************************\
+
+<personajedenavidad> ::= FATHERCHRISTMAS 
+            | KRISKRINGLE 
+            | SANTACLAUS 
+            | DEDMOROZ 
+            | SANNICOLAS
+
+<trajesdesanta> ::= FATHERCHRISTMAS
+            | SANTACLAUS
+
+<bolasdenavidad> := <bolsanavidena>
+            | <caja> FINREGALO
+            | <lucesdenavidad> FINREGALO
+
+<bolsanavidena> ::= FUNCTION <personajedenavidad> PERSONA ABRECUENTO <jueguetes> CIERRACUENTO <sacoderegalos>
+
+<jueguetes> ::= <carrito> 
+            | <carrito> PINO <jueguetes>
+            |
+
+<carrito> ::= <personajedenavidad> PERSONA 
+            | <personajedenavidad> PERSONA ABREEMPAQUE CIERRAEMPAQUE
+
+<caja> ::= <portal> 
+            | <portal> ENTREGA <regalo>
+
+<portal> ::= LOCAL <personajedenavidad> PERSONA 
+
+<lucesdenavidad> ::= <decoracionnavidena> 
+            | <decoracionnavidena> ENTREGA ABREEMPAQUE <listadedeseos> CIERRAEMPAQUE
+
+<decoracionnavidena> ::= LOCAL <trajesdesanta> PERSONA ABREEMPAQUE <regalo> CIERRAEMPAQUE
+
+<listadedeseos> ::= <regalo> 
+		| <regalo> PINO <listadedeseos>
+
+\***************************************************************************************\
+
+<trineo> ::= <bolasdenavidad>
+            | <frio>
+            | <nieve>
+            | <celebracionesnavidenas>
+            | <carta>
+            | <devolverregalo> 
+            | <romperregalo> 
+
+<muñecas> ::= <muñecas> <trineo>
+            | 
+
+<frio> ::= <regalo> FINREGALO 
+            | FINREGALO
+
+<nieve> ::= <juguetesenelarbol> ENTREGA <regalo>
+
+<celebracionesnavidenas> ::= <nochebuena> 
+            | <contarhistorianavidena>
+
+<nochebuena> ::= ELFO ABRECUENTO <regalo> CIERRACUENTO <sacoderegalos> <peliculanavidena>
+
+<peliculanavidena> ::= HADA ABRECUENTO <regalo> CIERRACUENTO <sacoderegalos> <peliculanavidena>
+            | DUENDE <sacoderegalos>
+		    | 
+
+<contarhistorianavidena> ::= <amigosecreto>
+            | <villancicos> 
+
+<amigosecreto> ::= HACE <sacoderegalos> REVISA ABRECUENTO <regalo> CIERRACUENTO FINREGALO
+
+<villancicos> ::= ENVUELVE ABRECUENTO <regalo> FINREGALO <regalo> FINREGALO <regalo> CIERRACUENTO <sacoderegalos>
+            | ENVUELVE ABRECUENTO <nieve> FINREGALO <regalo> FINREGALO <regalo> CIERRACUENTO <sacoderegalos>
+
+<carta> ::= <leercarta> FINREGALO
+            | <escribircarta> FINREGALO
+
+<leercarta> ::= ESCUCHA ABRECUENTO PERSONA CIERRACUENTO
+
+<escribircarta> ::= NARRA ABRECUENTO <regalo> CIERRACUENTO
+
+<devolverregalo> ::= ENVIA <frio>
+
+<romperregalo> ::= CORTA FINREGALO
+
+\***************************************************************************************\
+
+<regalo> ::= <regalo> GASPAR <regalomanual> 
+            | <regalomanual>
+
+<regalomanual> ::= <regalomanual> MELCHOR <papelderegalo> 
+            | <papelderegalo>
+
+<papelderegalo> ::= BALTAZAR <papelderegalo> 
+            | <familia>
+
+<familia> ::= <tamales> <regalocomprado> <tamales>
+            | <tamales>
+
+<regalocomprado> ::= ALABASTER
+            | BUSHY
+            | PEPPER
+            | SUGARPLUM
+            | WUNORSE
+            | JINGLE
+
+<tamales> ::= <tamales> <regaloprin> <niños>
+            | <niños>
+
+<regaloprin> ::= DASHER 
+            | DANCER
+
+<niños> ::= <niños> <galletas> <dulces>
+            | <dulces>
+
+<galletas> ::= PRANCER 
+            | VIXEN 
+            | COMET
+
+<dulces> ::= <dulces> RUDOLPH <juegos>
+            | <juegos>
+
+<juegos> ::= <regalomanual> <juegos>
+            | <jueguetenuevo>
+
+<regalomanual> ::= GRINCH 
+            | QUIEN
+            | DANCER
+
+<jueguetenuevo> ::= <juguetesenlafabrica>
+            | <juguetesenelarbol>
+
+<juguetesenelarbol> ::= PERSONA
+            | PERSONA ABREEMPAQUE <regalo> CIERRAEMPAQUE
+
+<juguetesenlafabrica> ::= ABRECUENTO <regalo> CIERRACUENTO
+            | <sobre>
+            | <campanas>
+
+<sobre> ::= PERSONA ABRECUENTO <estrella> CIERRACUENTO
+
+<estrella> ::= <adornos> 
+            | 
+
+<adornos> ::= <adornos> PINO <regalo> 
+            | <regalo> 
+
+<campanas> ::= L_FATHERCHRISTMAS 
+            | L_KRISKRINGLE
+            | L_SANTACLAUS
+            | L_DEDMOROZ
+            | L_SANNICOLAS
